@@ -36,5 +36,18 @@ public class GoogleScraper {
         }
 
 
+        // PrintWriter saves results to text file
+        final PrintWriter out = new PrintWriter("results.txt");
+
+        for (Element searchResult : page.select("h3.r a")) {
+
+            final String title = searchResult.text();
+            final String url = searchResult.attr("href");
+
+            out.write(title + " -> " + url + "\n");
+        }
+
+        out.close();
+
     }
 }
