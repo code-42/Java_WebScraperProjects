@@ -1,7 +1,9 @@
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URLEncoder;
 
 public class GoogleScraper {
@@ -16,10 +18,22 @@ public class GoogleScraper {
 
         final String query = "apple";
 
+
+        // Downloads the html from goole
+        // URLEncoder and USER_AGENT required if you get blocked
         final Document page = Jsoup.connect("https://www.google.com/search?q=" + URLEncoder.encode(query, "UTF-8"))
                 .userAgent(USER_AGENT).get();
 
-        System.out.println(page.outerHtml());
+        // Print html of page
+        // System.out.println(page.outerHtml());
+
+        for (Element searchResult : page.select("h3.r a")) {
+
+            final String title = searchResult.text();
+            final String url = searchResult.attr("href");
+
+            System.out.println(title + " -> " + url + "\n");
+        }
 
 
     }
