@@ -19,6 +19,11 @@ public class jsoup_intro {
         for (Element headline : newsHeadlines) {
             System.out.println(headline.text());
         }
+        
+        System.out.println("\n\n---------------------------------------------------\n\n");
+
+        // Print the outer html of the page
+        System.out.println(doc.outerHtml());
 
     }
 }
