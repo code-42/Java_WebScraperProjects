@@ -4,6 +4,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.mashape.unirest.request.HttpRequest;
 import org.apache.http.HttpHost;
+import org.json.JSONObject;
 
 public class UnirestScraper {
 
@@ -25,6 +26,19 @@ public class UnirestScraper {
         System.out.println("proxy ip:      " + getResponse.getBody().getObject().getString("origin")); // returns ip address
         System.out.println("User-Agent:    " + getResponse.getBody().getObject().getJSONObject("headers").getString("User-Agent"));
 
+        System.out.println("\n\n -----------------------------\n\n");
+
+        final HttpResponse<String> postResponse1 = Unirest.post("http://httpbin.org/post").field("postalcode", 12345).asString();
+
+        System.out.println(postResponse1.getBody());
+
+        System.out.println("\n\n -----------------------------\n\n");
+
+        // Make a post request with body data (Json)
+        final JSONObject exampleJson = new JSONObject().put("postalcode", 12345);
+        final HttpResponse<String> postResponse2 = Unirest.post("http://httpbin.org/post").body(exampleJson).asString();
+
+        System.out.println(postResponse2.getBody());
     }
 
 
