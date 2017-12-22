@@ -9,10 +9,13 @@ public class UnirestScraper {
 
 
         // Dependencies http://unirest.io/java.html
-        //Making a simple get request to httpbin.org
+        // Making a simple get request to httpbin.org
         final HttpResponse<JsonNode> getResponse = Unirest.get("http://httpbin.org/get").queryString("limit", 10)
                 .asJson();
 
-        System.out.println(getResponse.getBody());
+        System.out.println(getResponse.getBody().getObject());
+        System.out.println(getResponse.getBody().getObject().getString("origin")); // returns ip address
     }
+
+
 }
