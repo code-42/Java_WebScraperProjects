@@ -36,17 +36,28 @@ public class PeopleFinderScraper {
 
         // Extract data from htmlSnippet
         for (Element peopleResult : htmlSnippet.select("div.resultRow > div.col-md-12 > div.row > div.col-md-11")) {
-//            System.out.println(peopleResult.child(0).text());
 
-            final String name = peopleResult.child(0).text();
+            final String name = peopleResult.child(0).selectFirst("a").text();  // good
+
+            final Set<String> AKAnames = new HashSet<>();
+            // TODO: extract each AKA from first column
+            for (Element AKAResult : htmlSnippet.select("div.resultRow > div.col-md-12 > div.row > div.col-md-11 > div.col-md-3")) {
+
+                for (Element AKAname : peopleResult.child(0).children().select("div")) {
+                    AKAnames.add(AKAname.text());
+                }
+            }
+
             final String age = peopleResult.child(1).text();
+
             final Set<String> relatives = new HashSet<String>();
 
             for (Element relative : peopleResult.child(3).children().select("div > div")) {
                 relatives.add(relative.text());
             }
 
-            System.out.println(name + ", age: " + age + ", relatives: " + String.join(", ", relatives));
+            System.out.println(name + ", AKAs: " + String.join(", ", AKAnames) + ", age: " + age + ", relatives: " + String.join(", ", relatives));
         }
     }
 }
+

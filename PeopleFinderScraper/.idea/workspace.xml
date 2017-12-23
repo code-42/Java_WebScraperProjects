@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d9e339f1-027e-4ae0-a9e8-e18f1877c73d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../GoogleScraper/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../GoogleScraper/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/PeopleFinderScraper.iml" afterPath="$PROJECT_DIR$/PeopleFinderScraper.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PeopleFinderScraper.java" afterPath="$PROJECT_DIR$/src/main/java/PeopleFinderScraper.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PeopleFinderScraper.class" afterPath="$PROJECT_DIR$/target/classes/PeopleFinderScraper.class" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PeopleFinderScraper.class" afterPath="" />
       <change beforePath="$PROJECT_DIR$/../unirest_scraper/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../unirest_scraper/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,11 +34,11 @@
       <file leaf-file-name="PeopleFinderScraper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/PeopleFinderScraper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+            <state relative-caret-position="64">
+              <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2211#2219#0" expanded="true" />
+                <element signature="e#2595#2603#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -355,11 +351,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/PeopleFinderScraper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="50" column="5" lean-forward="false" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+        <state relative-caret-position="64">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2211#2219#0" expanded="true" />
+            <element signature="e#2595#2603#0" expanded="true" />
           </folding>
         </state>
       </provider>
