@@ -9,9 +9,12 @@ import java.util.Set;
 
 public class PeopleFinderScraper {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
+        // Replicate http call with Unirest.get() method
+        final HttpResponse<String> response = Unirest.get("https://www.peoplefinders.com/peoplesearch/searchresults?showAnimatedLoadingBar=true&search=People&fn=&ln=Smith&city=New+York&state=NY").asString();
 
+        System.out.println(response.getBody());
 
     }
 }
