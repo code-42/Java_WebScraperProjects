@@ -4,10 +4,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
+import java.io.PrintWriter;
 import java.util.HashSet;
 import java.util.Set;
 
 public class PeopleFinderScraper {
+
+    public static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36";
 
     public static void main(String[] args) throws Exception {
 
@@ -29,10 +32,12 @@ public class PeopleFinderScraper {
                 .queryString("state", state)
                 .asString();
 
-        System.out.println(response.getBody());
+//        System.out.println(response.getBody());
 
         // Parse the html snippet with Jsoup
         final Document htmlSnippet = Jsoup.parseBodyFragment(response.getBody());
+
+        final PrintWriter out = new PrintWriter("results.txt");
 
         // Extract data from htmlSnippet
         for (Element peopleResult : htmlSnippet.select("div.resultRow > div.col-md-12 > div.row > div.col-md-11")) {
@@ -56,8 +61,13 @@ public class PeopleFinderScraper {
                 relatives.add(relative.text());
             }
 
-            System.out.println(name + ", AKAs: " + String.join(", ", AKAnames) + ", age: " + age + ", relatives: " + String.join(", ", relatives));
+//            System.out.println(name + ", AKAs: " + String.join(", ", AKAnames) + ", age: " + age + ", relatives: " + String.join(", ", relatives));
+
+            // Write results to text file
+            out.write(name + ", AKAs: " + String.join(", ", AKAnames) + ", age: " + age + ", relatives: " + String.join(", ", relatives)  + "\n");
         }
+        out.close();
+
     }
 }
 
