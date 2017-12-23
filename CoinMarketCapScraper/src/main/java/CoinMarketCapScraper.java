@@ -23,8 +23,11 @@ public class CoinMarketCapScraper {
 
     public static void main(String[] args) throws Exception {
 
-        String url = "https://coinmarketcap.com";
-        final Document doc = Jsoup.connect(url).get();
+        String url = "https://coinmarketcap.com/all/views/all/";
+        final Document doc = Jsoup.connect(url)
+                .timeout(10000)
+                .maxBodySize(0)
+                .get();
 
         final Elements bigTable = doc.select("tbody > tr"); // gets row by row
 
@@ -32,11 +35,11 @@ public class CoinMarketCapScraper {
 
             System.out.println(row.text() + "\n");
 
-            final Elements bigTableData = doc.getElementsByTag("tr > td");
-
-            for (Element td : bigTableData) {
-                System.out.print(td.text() + "\t");
-            }
+//            final Elements bigTableData = doc.getElementsByTag("tr > td");
+//
+//            for (Element td : bigTableData) {
+//                System.out.print(td.text() + "\t");
+//            }
         }
 
     }
