@@ -31,5 +31,15 @@ public class PeopleFinderScraper {
 
         System.out.println(response.getBody());
 
-    }
+        // Parse the html snippet with Jsoup
+        final Document htmlSnippet = Jsoup.parseBodyFragment(response.getBody());
+
+        // Extract data from htmlSnippet
+        for (Element peopleResult : htmlSnippet.select("div.resultRow > div.col-md-12 > div.row > div.col-md-11")) {
+            System.out.println(peopleResult.child(0).text());
+        }
+
+
+
+        }
 }
