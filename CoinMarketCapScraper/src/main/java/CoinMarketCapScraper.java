@@ -17,9 +17,16 @@ import java.util.regex.*;
 
 public class CoinMarketCapScraper {
 
+    public static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36";
+
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     public static void main(String[] args) throws Exception {
 
+        String url = "https://coinmarketcap.com";
+        final Document doc = Jsoup.connect(url).get();
+
+        System.out.println(doc.body());
 
     }
 }
