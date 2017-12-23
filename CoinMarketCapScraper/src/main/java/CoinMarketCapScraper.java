@@ -26,7 +26,18 @@ public class CoinMarketCapScraper {
         String url = "https://coinmarketcap.com";
         final Document doc = Jsoup.connect(url).get();
 
-        System.out.println(doc.body());
+        final Elements bigTable = doc.select("tbody > tr"); // gets row by row
+
+        for (Element row : bigTable) {
+
+            System.out.println(row.text() + "\n");
+
+            final Elements bigTableData = doc.getElementsByTag("tr > td");
+
+            for (Element td : bigTableData) {
+                System.out.print(td.text() + "\t");
+            }
+        }
 
     }
 }
