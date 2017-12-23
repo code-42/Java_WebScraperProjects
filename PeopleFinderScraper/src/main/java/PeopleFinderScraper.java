@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class PeopleFinderScraper {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         // Replicate http call with Unirest.get() method
 //        final HttpResponse<String> response = Unirest.get("https://www.peoplefinders.com/peoplesearch/searchresults?showAnimatedLoadingBar=true&search=People&fn=&ln=Smith&city=New+York&state=NY").asString();
@@ -36,10 +36,17 @@ public class PeopleFinderScraper {
 
         // Extract data from htmlSnippet
         for (Element peopleResult : htmlSnippet.select("div.resultRow > div.col-md-12 > div.row > div.col-md-11")) {
-            System.out.println(peopleResult.child(0).text());
+//            System.out.println(peopleResult.child(0).text());
+
+            final String name = peopleResult.child(0).text();
+            final String age = peopleResult.child(1).text();
+            final Set<String> relatives = new HashSet<String>();
+
+            for (Element relative : peopleResult.child(3).children().select("div > div")) {
+                relatives.add(relative.text());
+            }
+
+            System.out.println(name + ", age: " + age + ", relatives: " + String.join(", ", relatives));
         }
-
-
-
-        }
+    }
 }
