@@ -40,10 +40,6 @@ public class CoinMarketCapScraper {
 
         PrintWriter csv = new PrintWriter("results.csv");
 
-//        out.write("Name", "Symbol", "Market Cap", "Price", "Circulating Supply", "Volume(24h)", "% 1h", "% 24h", "% 7d");
-
-//        csv.write("Name Symbol Market Cap Price Circulating Supply Volume(24h) % 1h% 24h % 7d\n");
-
         // tbody is first container inside of the first table
         Element table = doc.select("tbody").get(0);
 
@@ -65,5 +61,6 @@ public class CoinMarketCapScraper {
             System.out.println();
             csv.write("\n");
         }
+        csv.close();
     }
 }
