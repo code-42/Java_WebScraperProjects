@@ -12,6 +12,7 @@ import javax.lang.model.util.ElementScanner6;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -20,16 +21,18 @@ import java.util.regex.*;
 
 public class CoinMarketCapScraper {
 
-//    public static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36";
+    public static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36";
 
 //    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     public static void main(String[] args) throws Exception {
 
         String url = "https://coinmarketcap.com/all/views/all/";
+        String query = "";
 
         // Downloads the html from coinmarketcap.com and parses it
-        final Document doc = Jsoup.connect(url)
+        final Document doc = Jsoup.connect(url + URLEncoder.encode(query,"UTF-8"))
+                .userAgent(USER_AGENT)
                 .timeout(20000)
                 .maxBodySize(0)
                 .get();
