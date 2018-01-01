@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 import javax.lang.model.util.ElementScanner6;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -37,6 +38,12 @@ public class CoinMarketCapScraper {
                 .maxBodySize(0)
                 .get();
 
+        PrintWriter csv = new PrintWriter("results.csv");
+
+//        out.write("Name", "Symbol", "Market Cap", "Price", "Circulating Supply", "Volume(24h)", "% 1h", "% 24h", "% 7d");
+
+//        csv.write("Name Symbol Market Cap Price Circulating Supply Volume(24h) % 1h% 24h % 7d\n");
+
         // tbody is first container inside of the first table
         Element table = doc.select("tbody").get(0);
 
@@ -51,10 +58,12 @@ public class CoinMarketCapScraper {
             // print td for each row
             for (int c = 0; c < cols.size(); c++) {
                 System.out.print(cols.get(c).text() + "\t");
+                csv.write((cols.get(c).text() + "\t"));
             }
 
             // empty println is same as \n
             System.out.println();
+            csv.write("\n");
         }
     }
 }
