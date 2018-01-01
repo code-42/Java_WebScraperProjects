@@ -8,7 +8,10 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import javax.lang.model.util.ElementScanner6;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -26,25 +29,29 @@ public class CoinMarketCapScraper {
         String url = "https://coinmarketcap.com/all/views/all/";
 
         // Downloads the html from coinmarketcap.com and parses it
-        final Document doc = Jsoup.connect("https://coinmarketcap.com/all/views/all/") //.get();
-                .timeout(10000)
+        final Document doc = Jsoup.connect(url)
+                .timeout(20000)
                 .maxBodySize(0)
                 .get();
 
-        // Selects a bunch of tags
-        final Elements bigTable = doc.select("tbody > tr"); // gets row by row
+        // tbody is first container inside of the first table
+        Element table = doc.select("tbody").get(0);
 
-        // Loop through the table and print to console
-        for (Element row : bigTable) {
+        // Target each row in tbody
+        Elements rows = table.select("tr");
 
-            System.out.println(row.text() + "\n");
+        // Target each td inside of each row
+        for (int r = 0; r < rows.size(); r++) {
+            Element row = rows.get(r);
+            Elements cols = row.select("td");
 
-            final Elements bigTableData = doc.getElementsByTag("tr > td");
-
-            for (Element td : bigTableData) {
-                System.out.print(td.text() + "\t");
+            // print td for each row
+            for (int c = 0; c < cols.size(); c++) {
+                System.out.print(cols.get(c).text() + "\t");
             }
-        }
 
+            // empty println is same as \n
+            System.out.println();
+        }
     }
 }
