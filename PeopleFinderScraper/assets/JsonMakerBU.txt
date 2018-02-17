@@ -1,0 +1,39 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class JsonMaker {
+
+    private final String name;
+//    private final List<String> AKAnames = new ArrayList<>();
+    private final String age;
+//    private final List<String> relatives = new ArrayList<>();
+
+//    public JsonMaker(String name, List<String> AKAnames, String age, List<String> relatives) {
+    public JsonMaker(String name, String age) {
+        this.name = name;
+//        this.AKAnames = AKAnames;
+        this.age = age;
+//        this.relatives = relatives;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+//    public List<String> getAKAnames() {
+//        return AKAnames;
+//    }
+
+    public String getAge() {
+        return age;
+    }
+
+//    public List<String> getRelatives() {
+//        return relatives;
+//    }
+
+    public void PrintResults(){
+//        System.out.println(name + AKAnames + age + relatives);
+        System.out.println(name + " : " + age);
+    }
+}
